@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: #000000;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logout-btn {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    border: none;
+    font-size: 1.15rem;
+    cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.profile-container {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}

@@ -1,0 +1,55 @@
+.artists-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-artists-link {
+  text-decoration: none;
+  margin-right: 1rem;
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.fav-artists-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+}
+
+.fav-artists-list li {
+  list-style: none;
+  flex: 0 0 29%;
+  height: 300px;
+  /* width: 100px; */
+  background-color: #121212;
+  border-radius: 10px;
+  margin: 2rem 0 0 2rem;
+  position: relative;
+  cursor: pointer;
+  transition:all .3s ease;
+}
+
+.fav-artists-list li img {
+    border-radius: 50%;
+    width: 75%;
+    max-width: 225px;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.artist-name {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.fav-artists-list li:hover {
+    background-color: #282828;
+}

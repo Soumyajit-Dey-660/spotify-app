@@ -1,0 +1,52 @@
+.tracks-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .all-tracks-link {
+    text-decoration: none;
+    margin-right: 1rem;
+    color: #b3b3b3;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+  }  
+
+.track-img {
+    /* height: 50px;
+    width: 50px; */
+    width: 75%;
+    max-width: 60px;
+    height: auto;
+}
+
+.track-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem;
+}
+
+.track-details {
+    display: flex;
+    width: 50%;
+}
+
+.track-text-details {
+    margin-left: 1rem;
+}
+
+.rest-details {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.track-name {
+    font-weight: 500;
+    font-size: 1.15rem;
+}
+
+.track-artist {
+    color: #b3b3b3;
+    font-size: 0.85rem;
+}
