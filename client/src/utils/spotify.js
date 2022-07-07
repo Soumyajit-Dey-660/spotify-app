@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { LOCALSTORAGE_KEYS, LOCALSTORAGE_VALUES } from './localStorage';
 
+const BASEURL = `https://api.spotify.com/v1`;
+
 const logout = () => {
   for (const property in LOCALSTORAGE_KEYS) {
     window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
@@ -89,12 +91,25 @@ const accessToken = getAccessToken();
 
 export { accessToken, logout };
 
-axios.defaults.baseURL = `https://api.spotify.com/v1`;
+axios.defaults.baseURL = BASEURL;
 axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 export const getUserProfile = () => axios.get('/me');
 export const getTopArtists = (time_range = 'medium_term', limit = 10) =>
   axios.get(`/me/top/artists?time_range=${time_range}&limit=${limit}`);
-export const getTopSongs = (type, time_range = 'medium_term', limit = 10) =>
+export const getTopSongs = (time_range = 'medium_term', limit = 10) =>
   axios.get(`/me/top/tracks?time_range=${time_range}&limit=${limit}`);
+export const getCurrentlyPlayingSong = () =>
+  axios.get('/me/player/currently-playing');
+
+export const categoriesURL = `${BASEURL}/browse/categories?limit=6`;
+export const newReleasesURL = `${BASEURL}/browse/new-releases?limit=6`;
+export const featuredPlaylistsURL = `${BASEURL}/browse/featured-playlists?limit=6`;
+
+// export const getCategories = (limit = 6) =>
+//   axios.get(`/browse/categories?limit=${limit}`);
+// export const getNewReleases = (limit = 6) =>
+//   axios.get(`/browse/new-releases?limit=${limit}`);
+// export const getFeaturedPlaylist = (limit = 6) =>
+//   axios.get(`/browse/featured-playlists?limit=${limit}`);

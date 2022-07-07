@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getUserProfile } from '../../utils/spotify';
+import { getUserProfile } from '../../../utils/spotify';
 import './UserDetails.style.css';
 const UserDetails = () => {
   const [profile, setProfile] = useState(null);

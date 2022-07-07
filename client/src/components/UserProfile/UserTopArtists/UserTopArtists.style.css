@@ -10,12 +10,12 @@
   font-size: 0.85rem;
   font-weight: 700;
   margin-top: 0.5rem;
+  margin-right: 2rem;
 }
 
 .fav-artists-list {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
 }
 
 .fav-artists-list li {
@@ -52,4 +52,8 @@
 
 .fav-artists-list li:hover {
     background-color: #282828;
+}
+
+.all-artists-link:hover {
+   text-decoration: underline;
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getTopArtists } from '../../utils/spotify';
+import { getTopArtists } from '../../../utils/spotify';
 import './UserTopArtists.style.css';
 
 const UserTopArtists = () => {

@@ -1,0 +1,32 @@
+.song-player {
+    height: 5rem;
+    background-color: #282828;
+    display: flex;
+    align-items: center;
+}
+
+.song-details {
+    background-color: transparent;
+    width: 50%;
+    display: flex;
+    margin-left: 1rem;
+    align-items: center;
+}
+
+.current-song-text-details {
+    background-color: transparent;
+    margin-left: 1rem;
+}
+
+.current-song-name {
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 1.15rem;
+}
+
+.current-song-artist {
+    background-color: transparent;
+    color: #b3b3b3;
+    font-size: 0.85rem;
+    font-weight: 700;
+}

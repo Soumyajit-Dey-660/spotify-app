@@ -3,6 +3,7 @@ import { accessToken, logout } from './utils/spotify';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home';
+import Categories from './components/Browse/Categories/Categories';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -18,7 +19,7 @@ const App = () => {
             <Router>
               <Routes>
                 <Route path="/" element={<Home />} />
-                {/* <Route path="top" element={<UserTopItems />} /> */}
+                <Route path="browse" element={<Categories /> } />
               </Routes>
             </Router>
           </>
@@ -33,3 +34,5 @@ const App = () => {
 };
 
 export default App;
+
+// TODO: Fix all the "SEE ALL" links

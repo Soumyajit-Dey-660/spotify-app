@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTopSongs } from '../../utils/spotify';
+import { getTopSongs } from '../../../utils/spotify';
 import './UserTopSongs.style.css';
 
 const UserTopSongs = () => {
@@ -11,7 +11,6 @@ const UserTopSongs = () => {
           data: { items },
         } = await getTopSongs();
         setTopSongs(items);
-        console.log(items);
       } catch (err) {
         console.error(err);
       }
