@@ -43,7 +43,6 @@ const hasTokenExpired = () => {
 };
 
 const getAccessToken = () => {
-  // WTF?? TODO: localstorage access token undefined but check says otherwise
   //console.log(LOCALSTORAGE_VALUES.accessToken === 'undefined')
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -96,12 +95,26 @@ axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 export const getUserProfile = () => axios.get('/me');
-export const getTopArtists = (time_range = 'medium_term', limit = 10) =>
+export const getTopArtists = (time_range = 'short_term', limit = 10) =>
   axios.get(`/me/top/artists?time_range=${time_range}&limit=${limit}`);
-export const getTopSongs = (time_range = 'medium_term', limit = 10) =>
+export const getTopSongs = (time_range = 'short_term', limit = 10) =>
   axios.get(`/me/top/tracks?time_range=${time_range}&limit=${limit}`);
+export const getFollowingArtists = (type = 'artist', limit = 6) =>
+  axios.get(`/me/following?type=${type}&limit=${limit}`);
 export const getCurrentlyPlayingSong = () =>
   axios.get('/me/player/currently-playing');
+export const getParticularCategoryPlaylist = (category) =>
+  axios.get(`/browse/categories/${category}/playlists`);
+export const getPlaylistTracks = (playlistId) =>
+  axios.get(`/playlists/${playlistId}/tracks`);
+export const getArtistTracks = (artistId, countryCode) =>
+  axios.get(`/artists/${artistId}/top-tracks?market=${countryCode}`);
+export const getRelatedArtists = (artistId) =>
+  axios.get(`/artists/${artistId}/related-artists`);
+export const getArtistAlbums = (artistId, limit = 6) =>
+  axios.get(`/artists/${artistId}/albums?limit=${limit}`);
+export const getAlbumTracks = (albumId) =>
+  axios.get(`/albums/${albumId}/tracks`);
 
 export const categoriesURL = `${BASEURL}/browse/categories?limit=6`;
 export const newReleasesURL = `${BASEURL}/browse/new-releases?limit=6`;

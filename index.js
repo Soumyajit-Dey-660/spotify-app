@@ -35,7 +35,13 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
-  let scope = ['user-read-private', 'user-read-email', 'user-top-read', 'user-read-currently-playing'].join(' ');
+  let scope = [
+    'user-read-private',
+    'user-read-email',
+    'user-top-read',
+    'user-read-currently-playing',
+    'user-follow-read',
+  ].join(' ');
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: 'code',
@@ -72,7 +78,7 @@ app.get('/callback', async (req, res) => {
       const queryParams = querystring.stringify({
         access_token,
         refresh_token,
-        expires_in
+        expires_in,
       });
       // Redirect to React app
       res.redirect(`http://localhost:3000?${queryParams}`);
@@ -109,7 +115,7 @@ app.get('/refresh_token', async (req, res) => {
       }
     );
     if (response.status === 200) {
-      res.send({access_token: response.data.access_token});
+      res.send({ access_token: response.data.access_token });
     }
   } catch (error) {
     console.log(error);

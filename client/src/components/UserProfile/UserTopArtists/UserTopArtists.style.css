@@ -22,13 +22,12 @@
   list-style: none;
   flex: 0 0 29%;
   height: 300px;
-  /* width: 100px; */
   background-color: #121212;
   border-radius: 10px;
   margin: 2rem 0 0 2rem;
   position: relative;
   cursor: pointer;
-  transition:all .3s ease;
+  transition: all .3s ease;
 }
 
 .fav-artists-list li img {

@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home';
 import Categories from './components/Browse/Categories/Categories';
+import Category from './components/Browse/Category/Category';
+import PlaylistTracks from './components/Browse/PlaylistTracks/Tracks';
+import Artist from './components/Artist/Artist';
+import Album from './components/Album/Album';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -20,6 +24,10 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="browse" element={<Categories /> } />
+                <Route exact path='/browse/:categoryId' element={<Category />} />
+                <Route exact path='/playlists/:playlistId/tracks' element={<PlaylistTracks />} />
+                <Route exact path='/artist/:artistId' element={<Artist />} />
+                <Route exact path='/album/:albumId' element={<Album />} />
               </Routes>
             </Router>
           </>
@@ -36,3 +44,4 @@ const App = () => {
 export default App;
 
 // TODO: Fix all the "SEE ALL" links
+// TODO: Upon login get the geolocation and set the ISO_3166-1_alpha-2 country code

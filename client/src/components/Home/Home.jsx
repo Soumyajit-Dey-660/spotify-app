@@ -4,6 +4,7 @@ import UserTopArtists from '../UserProfile/UserTopArtists/UserTopArtists';
 import UserTopSongs from '../UserProfile/UserTopSongs/UserTopSongs';
 import { getCurrentlyPlayingSong } from '../../utils/spotify';
 import './Home.style.css';
+import UserFollowing from '../UserProfile/UserFollowing/UserFollowing';
 
 const Home = () => {
   const [currentSong, setCurrentSong] = useState(null);
@@ -13,7 +14,6 @@ const Home = () => {
         const {
           data: { item },
         } = await getCurrentlyPlayingSong();
-        // console.log(item);
         setCurrentSong(item);
       } catch (err) {
         console.error(err);
@@ -26,26 +26,32 @@ const Home = () => {
       <UserDetails />
       <UserTopArtists />
       <UserTopSongs />
+      <UserFollowing />
       {currentSong && (
-        <div className="song-player">
-          <div className="song-details">
-            <img
-              src={
-                currentSong.album.images &&
-                currentSong.album.images.length &&
-                currentSong.album.images[0].url
-              }
-              alt='Current playing song'
-              className="track-img"
-            />
-            <div className="current-song-text-details">
-              <p className="current-song-name">{currentSong.name}</p>
-              <p className="current-song-artist">
-                {currentSong.artists.length && currentSong.artists[0].name}
-              </p>
+        <>
+          <h3 style={{ fontWeight: 800, marginLeft: '1rem', marginBottom: '1rem' }}>
+            Currently Playing
+          </h3>
+          <div className="song-player">
+            <div className="song-details">
+              <img
+                src={
+                  currentSong.album.images &&
+                  currentSong.album.images.length &&
+                  currentSong.album.images[0].url
+                }
+                alt="Current playing song"
+                className="track-img"
+              />
+              <div className="current-song-text-details">
+                <p className="current-song-name">{currentSong.name}</p>
+                <p className="current-song-artist">
+                  {currentSong.artists.length && currentSong.artists[0].name}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
