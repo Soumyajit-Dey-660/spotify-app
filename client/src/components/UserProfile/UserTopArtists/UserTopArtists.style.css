@@ -18,6 +18,14 @@
     flex-wrap: wrap;
 }
 
+.artist-name {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  background-color: transparent;
+  font-weight: 700;
+}
+
 .fav-artists-list li {
   list-style: none;
   flex: 0 0 29%;
@@ -39,14 +47,6 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.artist-name {
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
-  background-color: transparent;
-  font-weight: 700;
 }
 
 .fav-artists-list li:hover {

@@ -1,0 +1,45 @@
+.search-box {
+    width: 35%;
+    border: none;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    color: #000000;
+}
+
+.search-container {
+    position: relative;
+    margin-top: 2.5rem;
+    width: 75%;
+    margin-left: 1.5rem;
+}
+
+.search-type-input {
+    color: #888888;
+    position: absolute;
+    background-color: #ffffff;
+    top: 25%;
+    margin-left: 0.5rem;
+}
+
+.search-box:focus {
+    outline: none;
+
+}
+
+.separator {
+    height: 5rem;
+}
+
+.mini-separator {
+    height: 2rem;
+}
+
+.episode-list-item {
+    height: 10rem;
+}
+
+.search-results-container {
+
+}

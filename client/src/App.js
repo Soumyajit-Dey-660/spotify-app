@@ -8,6 +8,7 @@ import Category from './components/Browse/Category/Category';
 import PlaylistTracks from './components/Browse/PlaylistTracks/Tracks';
 import Artist from './components/Artist/Artist';
 import Album from './components/Album/Album';
+import Search from './components/Search/Search/Search';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -28,6 +29,7 @@ const App = () => {
                 <Route exact path='/playlists/:playlistId/tracks' element={<PlaylistTracks />} />
                 <Route exact path='/artist/:artistId' element={<Artist />} />
                 <Route exact path='/album/:albumId' element={<Album />} />
+                <Route path='/search' element={<Search />} />
               </Routes>
             </Router>
           </>

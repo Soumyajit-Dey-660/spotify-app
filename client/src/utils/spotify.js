@@ -115,6 +115,8 @@ export const getArtistAlbums = (artistId, limit = 6) =>
   axios.get(`/artists/${artistId}/albums?limit=${limit}`);
 export const getAlbumTracks = (albumId) =>
   axios.get(`/albums/${albumId}/tracks`);
+export const getSearchResults = (query, type) =>
+  axios.get(`/search?q=${query}&type=${type}`);
 
 export const categoriesURL = `${BASEURL}/browse/categories?limit=6`;
 export const newReleasesURL = `${BASEURL}/browse/new-releases?limit=6`;

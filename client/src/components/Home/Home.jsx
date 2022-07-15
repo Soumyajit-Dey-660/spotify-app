@@ -5,6 +5,7 @@ import UserTopSongs from '../UserProfile/UserTopSongs/UserTopSongs';
 import { getCurrentlyPlayingSong } from '../../utils/spotify';
 import './Home.style.css';
 import UserFollowing from '../UserProfile/UserFollowing/UserFollowing';
+import SearchButton from '../Search/SearchButton/SearchButton';
 
 const Home = () => {
   const [currentSong, setCurrentSong] = useState(null);
@@ -23,13 +24,20 @@ const Home = () => {
   }, []);
   return (
     <>
+      <SearchButton />
       <UserDetails />
       <UserTopArtists />
       <UserTopSongs />
       <UserFollowing />
       {currentSong && (
         <>
-          <h3 style={{ fontWeight: 800, marginLeft: '1rem', marginBottom: '1rem' }}>
+          <h3
+            style={{
+              fontWeight: 800,
+              marginLeft: '1rem',
+              marginBottom: '1rem',
+            }}
+          >
             Currently Playing
           </h3>
           <div className="song-player">
