@@ -40,6 +40,17 @@
     height: 10rem;
 }
 
-.search-results-container {
+.search-categories-container {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}
 
+.search-category {
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    margin: 0.5rem;
 }
