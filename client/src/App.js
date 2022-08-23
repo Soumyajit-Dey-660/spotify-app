@@ -20,23 +20,35 @@ const App = () => {
       <header className="App-header">
         {token !== null ? (
           <>
-            <button className='logout-btn' onClick={logout}>Log Out</button>
+            <button className="logout-btn" onClick={logout}>
+              Log Out
+            </button>
             <Router>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="browse" element={<Categories /> } />
-                <Route exact path='/browse/:categoryId' element={<Category />} />
-                <Route exact path='/playlists/:playlistId/tracks' element={<PlaylistTracks />} />
-                <Route exact path='/artist/:artistId' element={<Artist />} />
-                <Route exact path='/album/:albumId' element={<Album />} />
-                <Route path='/search' element={<Search />} />
+                <Route path="browse" element={<Categories />} />
+                <Route
+                  exact
+                  path="/browse/:categoryId"
+                  element={<Category />}
+                />
+                <Route
+                  exact
+                  path="/playlists/:playlistId/tracks"
+                  element={<PlaylistTracks />}
+                />
+                <Route exact path="/artist/:artistId" element={<Artist />} />
+                <Route exact path="/album/:albumId" element={<Album />} />
+                <Route path="/search" element={<Search />} />
               </Routes>
             </Router>
           </>
         ) : (
-          <a className="App-link" href="http://localhost:5001/login">
-            Login to Spotify
-          </a>
+          <div className="App-wrapper">
+            <a className="App-link" href="http://localhost:5001/login">
+              Login to Spotify
+            </a>
+          </div>
         )}
       </header>
     </div>

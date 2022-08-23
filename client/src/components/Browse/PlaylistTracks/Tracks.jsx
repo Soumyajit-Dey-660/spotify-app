@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPlaylistTracks } from '../../../utils/spotify';
+import Loader from '../../utils/Loader';
 
 const Tracks = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { playlistId } = useParams();
   const [tracks, setTracks] = useState(null);
   useEffect(() => {
     const fetchPlaylistTracks = async () => {
       try {
+        setIsLoading(true);
         const {
           data: { items },
         } = await getPlaylistTracks(playlistId);
         setTracks(items);
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
+        setIsLoading(false);
       }
     };
     fetchPlaylistTracks();
   }, [playlistId]);
   return (
     <>
+      {isLoading && <Loader />}
       {tracks && (
         <>
           <div className="tracks-header">

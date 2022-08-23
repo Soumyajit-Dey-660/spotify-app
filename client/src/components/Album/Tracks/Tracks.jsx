@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Loader from '../../utils/Loader';
 import { useParams, useLocation } from 'react-router-dom';
 import { getAlbumTracks } from '../../../utils/spotify';
 
 const Tracks = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { albumId } = useParams();
   const {
     state: { albumName, imgUrl },
@@ -11,27 +13,34 @@ const Tracks = () => {
   useEffect(() => {
     const fetchAlbumTracks = async () => {
       try {
+        setIsLoading(true);
         const {
           data: { items },
         } = await getAlbumTracks(albumId);
         setTracks(items);
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
+        setIsLoading(false);
       }
     };
     fetchAlbumTracks();
   }, [albumId]);
   return (
     <>
+      {isLoading && <Loader />}
+
       {tracks && (
         <>
           <div className="tracks-header">
             <h3
               style={{ fontWeight: 800, marginLeft: '2rem', marginTop: '2rem' }}
             >
-              <p style={{fontSize: '0.95rem', color: '#888888'}}>
-                All Tracks from 
-                <span style={{ fontSize: '1.5rem', marginLeft: '0.75rem'}}>{albumName}</span>
+              <p style={{ fontSize: '0.95rem', color: '#888888' }}>
+                All Tracks from
+                <span style={{ fontSize: '1.5rem', marginLeft: '0.75rem' }}>
+                  {albumName}
+                </span>
               </p>
             </h3>
           </div>

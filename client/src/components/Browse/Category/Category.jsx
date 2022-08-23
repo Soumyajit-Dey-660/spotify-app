@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getParticularCategoryPlaylist } from '../../../utils/spotify';
 import { capitalizeWord } from '../../../utils/generics';
+import Loader from '../../utils/Loader';
 
 const Category = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [categoryPlaylist, setCategoryPlaylist] = useState(null);
@@ -12,20 +14,26 @@ const Category = () => {
   useEffect(() => {
     const fetchCategoryPlaylist = async () => {
       try {
+        setIsLoading(true);
+
         const {
           data: {
             playlists: { items },
           },
         } = await getParticularCategoryPlaylist(categoryId);
         setCategoryPlaylist(items);
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
+        setIsLoading(false);
       }
     };
     fetchCategoryPlaylist();
   }, [categoryId]);
   return (
     <>
+      {isLoading && <Loader />}
+
       {categoryPlaylist && (
         <>
           <div className="playlists-header">

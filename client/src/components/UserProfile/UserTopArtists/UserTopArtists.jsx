@@ -2,25 +2,31 @@ import { useEffect, useState } from 'react';
 import { getTopArtists } from '../../../utils/spotify';
 import { useNavigate } from 'react-router-dom';
 import './UserTopArtists.style.css';
+import Loader from '../../utils/Loader';
 
 const UserTopArtists = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [topArtists, setTopArtists] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchUserTopArtists = async () => {
       try {
+        setIsLoading(true);
         const {
           data: { items },
         } = await getTopArtists();
         setTopArtists(items);
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
+        setIsLoading(false);
       }
     };
     fetchUserTopArtists();
   }, []);
   return (
     <>
+      {isLoading && <Loader />}
       {topArtists && (
         <>
           <div className="artists-header">

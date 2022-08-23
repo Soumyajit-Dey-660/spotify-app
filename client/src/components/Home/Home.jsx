@@ -6,24 +6,31 @@ import { getCurrentlyPlayingSong } from '../../utils/spotify';
 import './Home.style.css';
 import UserFollowing from '../UserProfile/UserFollowing/UserFollowing';
 import SearchButton from '../Search/SearchButton/SearchButton';
+import Loader from '../utils/Loader';
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [currentSong, setCurrentSong] = useState(null);
   useEffect(() => {
     const fetchCurrentSong = async () => {
       try {
+        setIsLoading(true);
+
         const {
           data: { item },
         } = await getCurrentlyPlayingSong();
         setCurrentSong(item);
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
+        setIsLoading(false);
       }
     };
     fetchCurrentSong();
   }, []);
   return (
     <>
+    {isLoading && <Loader />}
       <SearchButton />
       <UserDetails />
       <UserTopArtists />

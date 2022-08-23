@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { getTopSongs } from '../../../utils/spotify';
+import Loader from '../../utils/Loader';
 import './UserTopSongs.style.css';
 
 const UserTopSongs = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [topSongs, setTopSongs] = useState(null);
   useEffect(() => {
     const fetchUserTopSongs = async () => {
       try {
+        setIsLoading(true);
         const {
           data: { items },
         } = await getTopSongs();
         setTopSongs(items);
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
+        setIsLoading(false);
       }
     };
     fetchUserTopSongs();
   }, []);
   return (
     <>
+      {isLoading && <Loader />}
       {topSongs && (
         <>
           <div className="tracks-header">
-            <h3 style={{ fontWeight: 800, marginLeft: '2rem', marginTop: '2rem' }}>
+            <h3
+              style={{ fontWeight: 800, marginLeft: '2rem', marginTop: '2rem' }}
+            >
               Your favorite Tracks
             </h3>
             <a href="" className="all-tracks-link">

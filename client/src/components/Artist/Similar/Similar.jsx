@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import Loader from '../../utils/Loader'
 import { getRelatedArtists } from '../../../utils/spotify';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Similar = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { artistId } = useParams();
   const navigate = useNavigate();
   const [artists, setArtists] = useState(null);
   useEffect(() => {
     const fetchSimilarArtists = async () => {
       try {
+        setIsLoading(true);
         const {
           data: { artists },
         } = await getRelatedArtists(artistId);
         // LIMIT 6
         setArtists(artists.slice(0, 6));
+        setIsLoading(false);
       } catch (err) {
         console.error(err);
+        setIsLoading(false);
       }
     };
     fetchSimilarArtists();
   }, [artistId]);
   return (
     <>
+      {isLoading && <Loader />}
       {artists && (
         <>
           <div className="artists-header">

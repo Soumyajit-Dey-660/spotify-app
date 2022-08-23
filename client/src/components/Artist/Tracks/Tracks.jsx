@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArtistTracks } from '../../../utils/spotify';
+import Loader from '../../utils/Loader';
 
 const Tracks = () => {
-    const { artistId } = useParams();
-    const [tracks, setTracks] = useState(null);
-    useEffect(() => {
-        const fetchArtistTracks = async () => {
-            try {
-                const { data: { tracks } } = await getArtistTracks(artistId, 'IN');
-                setTracks(tracks);
-            } catch(err) {  
-                console.error(err);
-            }
-        }
-        fetchArtistTracks();
-    }, [artistId])
+  const [isLoading, setIsLoading] = useState(false);
+  const { artistId } = useParams();
+  const [tracks, setTracks] = useState(null);
+  useEffect(() => {
+    const fetchArtistTracks = async () => {
+      try {
+        setIsLoading(true);
+        const {
+          data: { tracks },
+        } = await getArtistTracks(artistId, 'IN');
+        setTracks(tracks);
+        setIsLoading(false);
+      } catch (err) {
+        console.error(err);
+        setIsLoading(false);
+      }
+    };
+    fetchArtistTracks();
+  }, [artistId]);
   return (
     <>
+      {isLoading && <Loader />}
       {tracks && (
         <>
           <div className="tracks-header">
@@ -62,7 +70,7 @@ const Tracks = () => {
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Tracks
+export default Tracks;
